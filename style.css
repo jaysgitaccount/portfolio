@@ -14,21 +14,28 @@
     color: red;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
+    min-height: 100vh;
+    min-width: 100vw;
     background-color: var(--static-background);
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: var(--primary-text-color);
+    
 }
 
-section {
+body > div {
     /* on mobile, the gutters should be minimum 16px */
     margin: 0 auto;
-    padding: 1rem;
+    padding: 4rem 2rem;
     width: calc(70vw + 80px);
     background-color: var(--main-background);
-    box-sizing: border-box;
+    height: 100%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -38,6 +45,7 @@ section {
 }
 
 .header {
+    background-color: var(--main-background);
     margin: 0;
     padding: 1rem 2rem;
     display: flex;
@@ -46,9 +54,18 @@ section {
     width: 100%;
 }
 
+.footer {
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer p {
+    margin: 2px auto;
+}
+
 .content {
-    padding: 4rem 2rem;
-    min-height: 60vh;
+    padding: 2rem 0;
 }
 
 ul {
@@ -61,20 +78,89 @@ ul li:not(:first-child) {
     padding-left: 10px;
 }
 
-.button {
-    width: fit-content;
-    background-color: #1c1c1c;
-    padding: 0.8rem 1rem;
-    border: 2px solid var(--accent-two);
-    transition: all 0.2s;
-}
-
-.button:active, .button:focus {
-    color: var(--accent-one);
-    border: var(--accent-one);
-}
 
 a {
     text-decoration: none;
     color: inherit;
+}
+
+a:focus-visible,
+a:focus-within {
+    /* Removing TAB focus default styling */
+    outline: none;
+}
+
+.button {
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+    background: none;
+    width: 250px;
+    height: 50px;
+    /*background-color: #1c1c1c;*/
+    /*padding: 0.8rem 1rem;*/
+    border: 2px solid var(--accent-two);
+    transition: color 0.3s ease-out;
+}
+
+.button:active,
+.button:hover,
+.button:focus,
+.button:focus-visible,
+.button:focus-within {
+    color: var(--opposite-text-color);
+    transition: color 0.2s ease-in;
+}
+
+.button a {
+    margin: 0.8rem 1rem;
+    z-index: 1;
+}
+
+.button div {
+    position: absolute;
+    background-color: var(--accent-one);
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.3 ease-out;
+}
+
+.button:hover div {
+    transform: translateX(0);
+    transition: transform 0.2s ease-in;
+}
+
+i {
+    margin: 0 2px;
+    font-size: 40px;
+    transition: all 0.3s ease-out;
+}
+
+i:hover,
+i:active,
+i:focus {
+    transform: scale(110%);
+    color: var(--accent-one);
+    transition: all 0.1s ease-in;
+}
+
+.expandable {
+    padding: 2px 0;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--primary-text-color);
+    width: 66%;
+    background: none;
+    text-align: left;
+    border-bottom: 1px solid var(--accent-two);
+}
+
+.expandable::after {
+    content: "+";
+}
+
+.expandable:hover, .active {
+    background-color: #c18606;
 }
