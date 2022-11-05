@@ -1,41 +1,97 @@
 :root {
     font-size: 16px;
-    /* default */
-    --static-background: #1c1c1c;
-    --main-background: #101010;
-    --primary-text-color: #ffffff;
-    --opposite-text-color: #000000;
-    --accent-one: #ffae00;
-    --accent-two: #c18606;
 }
 
-:root.dark {
-    /* testing dark mode */
-    color: red;
+body {
+    /* Default: Light mode */
+    --static-background: #cccccc;
+    --header-background: #f3f3f3;
+    --main-background: #e7e7e7;
+    --primary-text-color: #222222;
+    --opposite-text-color: #ffffff;
+    --sun-color: #ffae00;
+    --sun-font-size: 2.1rem;
+    --sun-opacity: 1.0;
+    --sun-z-index: 1;
+    --moon-color: #222222;
+    --moon-font-size: 1.3rem;
+    --moon-opacity: 0.5;
+    --moon-z-index: 0;
+
+    --accent-one: #ffae00;
+    --accent-two: #c18606;
+
+    min-height: 100vh;
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    background-color: var(--static-background);
+    color: var(--primary-text-color);
+}
+
+body.dark {
+    /* Dark mode */
+    --static-background: #101010;
+    --header-background: #242424;
+    --main-background: #1c1c1c;
+    --primary-text-color: #ffffff;
+    --opposite-text-color: #222222;
+    --sun-color: #ffae00;
+    --sun-font-size: 1.3rem;
+    --sun-opacity: 0.5;
+    --sun-z-index: 0;
+    --moon-color: #ffffff;
+    --moon-font-size: 2.1rem;
+    --moon-opacity: 1.0;
+    --moon-z-index: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        --static-background: #101010;
+        --header-background: #242424;
+        --main-background: #1c1c1c;
+        --primary-text-color: #ffffff;
+        --opposite-text-color: #222222;
+        --sun-color: #ffae00;
+        --sun-font-size: 1.3rem;
+        --sun-opacity: 0.5;
+        --sun-z-index: 0;
+        --moon-color: #ffffff;
+        --moon-font-size: 2.1rem;
+        --moon-opacity: 1.0;
+        --moon-z-index: 1;
+    }
+    body.light {
+        --static-background: #cccccc;
+        --header-background: #f3f3f3;
+        --main-background: #e7e7e7;
+        --primary-text-color: #222222;
+        --opposite-text-color: #ffffff;
+        --sun-color: #ffae00;
+        --sun-font-size: 2.1rem;
+        --sun-opacity: 1.0;
+        --sun-z-index: 1;
+        --moon-color: #222222;
+        --moon-font-size: 1.3rem;
+        --moon-opacity: 0.5;
+        --moon-z-index: 0;
+    }
 }
 
 * {
     box-sizing: border-box;
 }
 
-body {
-    min-height: 100vh;
-    min-width: 100vw;
-    background-color: var(--static-background);
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    color: var(--primary-text-color);
-    
-}
-
-body > div {
+main {
     /* on mobile, the gutters should be minimum 16px */
     margin: 0 auto;
     padding: 4rem 2rem;
     width: calc(70vw + 80px);
     background-color: var(--main-background);
-    height: 100%;
+    min-height: 100%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -45,9 +101,11 @@ body > div {
 }
 
 .header {
-    background-color: var(--main-background);
+    background-color: var(--header-background);
+    height: clamp(80px, 12vh, 100px);
+    /* clamp(8vh, 10vh, calc(7vh + 45px)) */
+    padding: 0 4rem;
     margin: 0;
-    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,55 +118,76 @@ body > div {
     flex-direction: column;
 }
 
-.footer p {
+.footer * {
     margin: 2px auto;
 }
 
+.footer a {
+    text-decoration: underline;
+}
+
 .content {
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
-
-ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-}
-
-ul li:not(:first-child) {
-    padding-left: 10px;
-}
-
 
 a {
     text-decoration: none;
     color: inherit;
 }
 
-a:focus-visible,
-a:focus-within {
-    /* Removing TAB focus default styling */
-    outline: none;
+.button {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: none;
 }
 
-.button {
-    display: flex;
+#toggle-theme {
+    border: 2px solid var(--primary-text-color);
+    border-radius: 30px;
+    height: 50px;
+    width: 100px;
+}
+
+#toggle-theme:hover {
+    transform: scale(110%);
+}
+
+#light {
+    position: absolute;
+    color: var(--sun-color);
+    opacity: var(--sun-opacity);
+    font-size: var(--sun-font-size);
+    z-index: var(--sun-z-index);
+    transform: translateX(-0.6rem);
+}
+
+#dark {
+    position: absolute;
+    color: var(--moon-color);
+    opacity: var(--moon-opacity);
+    font-size: var(--moon-font-size);
+    z-index: var(--moon-z-index);
+    transform: translateX(0.6rem);
+}
+
+main .button {
     overflow: hidden;
-    justify-content: center;
-    position: relative;
     background: none;
     width: 250px;
     height: 50px;
-    /*background-color: #1c1c1c;*/
-    /*padding: 0.8rem 1rem;*/
     border: 2px solid var(--accent-two);
     transition: color 0.3s ease-out;
+    font-weight: bold;
+    color: var(--primary-text-color);
 }
 
-.button:active,
-.button:hover,
-.button:focus,
-.button:focus-visible,
-.button:focus-within {
+main .button:hover,
+main .button:active,
+main .button:focus,
+main .button:focus-visible,
+main .button:focus-within {
     color: var(--opposite-text-color);
     transition: color 0.2s ease-in;
 }
@@ -118,7 +197,7 @@ a:focus-within {
     z-index: 1;
 }
 
-.button div {
+main .button div {
     position: absolute;
     background-color: var(--accent-one);
     width: 100%;
@@ -127,26 +206,13 @@ a:focus-within {
     transition: transform 0.3 ease-out;
 }
 
-.button:hover div {
+main .button:hover div {
     transform: translateX(0);
     transition: transform 0.2s ease-in;
 }
 
-i {
-    margin: 0 2px;
-    font-size: 40px;
-    transition: all 0.3s ease-out;
-}
-
-i:hover,
-i:active,
-i:focus {
-    transform: scale(110%);
-    color: var(--accent-one);
-    transition: all 0.1s ease-in;
-}
-
 .expandable {
+    margin-top: 2rem;
     padding: 2px 0;
     border: none;
     font-size: 1.8rem;
@@ -161,6 +227,20 @@ i:focus {
     content: "+";
 }
 
-.expandable:hover, .active {
+.expandable:hover, .expanded {
     background-color: #c18606;
+}
+
+main i {
+    margin: 0 3px;
+    font-size: 40px;
+    transition: all 0.3s ease-out;
+}
+
+main i:hover,
+main i:active,
+main i:focus {
+    transform: scale(110%);
+    color: var(--accent-one);
+    transition: all 0.1s ease-in;
 }
