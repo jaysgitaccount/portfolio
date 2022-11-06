@@ -11,9 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     expandables.forEach(element => {
         element.addEventListener("click", () => {
             element.classList.toggle('active');
-
             const content = element.nextElementSibling;
-
             content.style.maxHeight
                 ? content.style.maxHeight = null
                 : content.style.maxHeight = content.scrollHeight + 'px';
@@ -50,5 +48,27 @@ document.addEventListener("DOMContentLoaded", function () {
             : 'light';
         } 
         localStorage.setItem('theme', theme);
+    });
+
+    // STICKY HEADER
+    // if currentScroll, window.pageYOffset, < 0, .scrolldown must be on body
+    // if currentScroll => 0, remove scrolldown
+    const header = document.querySelector('header');
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+        let currentScroll = window.pageYOffset;       
+
+        console.log('hello' + lastScroll);
+
+        if ( currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+            // if current pos is greater than lastScroll (scrolled down)
+            // and the header does NOT already have .scroll-down
+            header.classList.add('scroll-down');
+        } else if ( currentScroll <= lastScroll && header.classList.contains('scroll-down')) {
+            header.classList.remove('scroll-down');
+        }
+        //save current scroll;;
+        lastScroll = currentScroll;
     });
 });

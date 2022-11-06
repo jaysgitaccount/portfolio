@@ -90,16 +90,19 @@ body.dark {
     }
 }
 
-header {
-    position: sticky;
+header {    vertical-align: middle;
+    position: fixed;
     background-color: var(--header-background);
     padding: 0 5vw;
     margin: 0;
-    display: flex;
+    display: flex;    vertical-align: middle;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 6vh;
+    z-index: 2;
+    transform: none;
+    transition: transform 0.2s ease-in;
 }
 
 main, footer {
@@ -176,12 +179,12 @@ main .button {
     transition: color 0.3s ease-out;
     font-weight: bold;
     color: var(--primary-text-color);
+    vertical-align: middle;
 }
 
 main .button:hover,
 main .button:active,
 main .button:focus,
-main .button:focus-visible,
 main .button:focus-within {
     color: var(--opposite-text-color);
     transition: color 0.2s ease-in;
@@ -207,9 +210,8 @@ main .button:hover div {
 }
 
 .expandable {
-    margin-top: 1rem;
-    padding: 2px 0.8rem;
     border: none;
+    padding: 0;
     font-size: 1.8rem;
     color: var(--primary-text-color);
     width: 100%;
@@ -222,6 +224,7 @@ main .button:hover div {
     content: "\002B";
     font-weight: bold;
     float: right;
+    transition: transform 0.2s ease-in;
 }
 
 .expandable:hover, .active {
@@ -230,10 +233,16 @@ main .button:hover div {
 }
 
 .active::after {
-    content: "\2212";
+    transform: rotate(-135deg);
 }
 
-.content {
+.expandable h1,
+.expandable::after,
+.expandable + section {
+    padding: 3px 5px;
+}
+
+.expandable + section {
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.2s ease-out;
@@ -253,6 +262,25 @@ main i:focus {
     transition: all 0.1s ease-in;
 }
 
+.scroll-down {
+    transform: translateY(-100%);
+}
+
+h1 {
+    display: inline;
+    font-size: 2rem;
+}
+
+main section > div {
+    margin: 16px 0;
+}
+
 h2 {
     font-size: 1.3rem;
+    margin: 8px 0;
+}
+
+section p {
+    font-size: 0.8rem;
+    margin: 8px 0;
 }

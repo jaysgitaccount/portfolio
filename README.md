@@ -82,3 +82,11 @@ Learnings from being confused about anchor pseudo-classes:
 `? content.style.maxHeight = null` works, but `? content.style.maxHeight = 0` does not (you can only open and close once). Why?
 
 Doing `content.style.maxHeight === 0` as a check along with `= 0` also doesn't work.
+
+### Sticky header
+
+Default: transform: none;
+Helper class: .scrolldown { transform: translateY(-100%); }
+Add event listener "scroll" to the window that, on scroll, saves the current pageYOffset of window.
+If pageYOffset is negative (scroll down), add .scrolldown to header.
+If pageYOffset is positive (scroll up), remove .scrolldown (toggle?).
