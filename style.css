@@ -126,10 +126,6 @@ main {
     text-decoration: underline;
 }
 
-.content {
-    padding: 1rem 0;
-}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -212,8 +208,8 @@ main .button:hover div {
 }
 
 .expandable {
-    margin-top: 2rem;
-    padding: 2px 0;
+    margin-top: 1rem;
+    padding: 6px;
     border: none;
     font-size: 1.8rem;
     color: var(--primary-text-color);
@@ -224,11 +220,19 @@ main .button:hover div {
 }
 
 .expandable::after {
-    content: "+";
+    content: "\002B";
+    font-weight: bold;
+    float: right;
 }
 
-.expandable:hover, .expanded {
+.expandable:hover, .active {
     background-color: #c18606;
+}
+
+.content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
 }
 
 main i {
@@ -243,4 +247,8 @@ main i:focus {
     transform: scale(110%);
     color: var(--accent-one);
     transition: all 0.1s ease-in;
+}
+
+h2 {
+    font-size: 1.3rem;
 }
