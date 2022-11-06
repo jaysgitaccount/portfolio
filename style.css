@@ -19,11 +19,11 @@ body {
     --primary-text-color: #222222;
     --opposite-text-color: #ffffff;
     --sun-color: #ffae00;
-    --sun-font-size: 2.1rem;
+    --sun-font-size: 1.8rem;
     --sun-opacity: 1.0;
     --sun-z-index: 1;
     --moon-color: #222222;
-    --moon-font-size: 1.3rem;
+    --moon-font-size: 1rem;
     --moon-opacity: 0.5;
     --moon-z-index: 0;
 
@@ -48,11 +48,11 @@ body.dark {
     --primary-text-color: #ffffff;
     --opposite-text-color: #222222;
     --sun-color: #ffae00;
-    --sun-font-size: 1.3rem;
+    --sun-font-size: 1rem;
     --sun-opacity: 0.5;
     --sun-z-index: 0;
     --moon-color: #ffffff;
-    --moon-font-size: 2.1rem;
+    --moon-font-size: 1.8rem;
     --moon-opacity: 1.0;
     --moon-z-index: 1;
 }
@@ -65,11 +65,11 @@ body.dark {
         --primary-text-color: #ffffff;
         --opposite-text-color: #222222;
         --sun-color: #ffae00;
-        --sun-font-size: 1.3rem;
+        --sun-font-size: 1rem;
         --sun-opacity: 0.5;
         --sun-z-index: 0;
         --moon-color: #ffffff;
-        --moon-font-size: 2.1rem;
+        --moon-font-size: 1.8rem;
         --moon-opacity: 1.0;
         --moon-z-index: 1;
     }
@@ -80,22 +80,22 @@ body.dark {
         --primary-text-color: #222222;
         --opposite-text-color: #ffffff;
         --sun-color: #ffae00;
-        --sun-font-size: 2.1rem;
+        --sun-font-size: 1.8rem;
         --sun-opacity: 1.0;
         --sun-z-index: 1;
         --moon-color: #222222;
-        --moon-font-size: 1.3rem;
+        --moon-font-size: 1rem;
         --moon-opacity: 0.5;
         --moon-z-index: 0;
     }
 }
 
-header {    vertical-align: middle;
+header {    
     position: fixed;
     background-color: var(--header-background);
     padding: 0 5vw;
     margin: 0;
-    display: flex;    vertical-align: middle;
+    display: flex;    
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -210,14 +210,18 @@ main .button:hover div {
 }
 
 .expandable {
-    border: none;
     padding: 0;
     font-size: 1.8rem;
-    color: var(--primary-text-color);
     width: 100%;
+    display: flex;    
+    justify-content: space-between;
+    align-items: center;
     background: none;
+    color: var(--primary-text-color);
     text-align: left;
+    border: 1px solid rgba(1,1,1,0);
     border-bottom: 1px solid var(--accent-two);
+    transition: border 0.1s ease-in;
 }
 
 .expandable::after {
@@ -228,7 +232,7 @@ main .button:hover div {
 }
 
 .expandable:hover, .active {
-    background-color: #c18606;
+    border: 2px solid var(--accent-two);
     cursor: pointer;
 }
 
@@ -239,7 +243,7 @@ main .button:hover div {
 .expandable h1,
 .expandable::after,
 .expandable + section {
-    padding: 3px 5px;
+    padding: 4px 8px;
 }
 
 .expandable + section {
@@ -268,7 +272,8 @@ main i:focus {
 
 h1 {
     display: inline;
-    font-size: 2rem;
+    font-size: 1.6rem;
+    margin: 0;
 }
 
 main section > div {
@@ -277,10 +282,69 @@ main section > div {
 
 h2 {
     font-size: 1.3rem;
-    margin: 8px 0;
 }
 
 section p {
-    font-size: 0.8rem;
-    margin: 8px 0;
+    font-size: 1rem;
+}
+
+/* Theme Toggle */
+
+.theme-switch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theme-switch i {
+    margin: 0 5px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--main-background);
+    border-radius: 20px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--primary-text-color);
+    border-radius: 20px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+input:focus + .slider {
+    outline: 1px solid var(--accent-two);
+}
+
+input:checked + .slider::before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
 }

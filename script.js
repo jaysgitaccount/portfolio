@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     });
 
+    const toggle = document.querySelector('#toggle');
     const themeButton = document.querySelector('#toggle-theme');
     const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
     const currentTheme = localStorage.getItem('theme');
@@ -30,7 +31,27 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.toggle('light');
     }
 
-    themeButton.addEventListener('click', function() {
+    // themeButton.addEventListener('click', function() {
+    //     let theme;
+    //     if(prefersDarkMode.matches) {
+    //         document.body.classList.toggle('light');
+
+    //         theme =
+    //         document.body.classList.contains('light')
+    //         ? 'light'
+    //         : 'dark';
+    //     } else {
+    //         document.body.classList.toggle('dark');
+
+    //         theme = 
+    //         document.body.classList.contains('dark')
+    //         ? 'dark'
+    //         : 'light';
+    //     } 
+    //     localStorage.setItem('theme', theme);
+    // });
+
+    toggle.addEventListener('input', (event) => {
         let theme;
         if(prefersDarkMode.matches) {
             document.body.classList.toggle('light');
