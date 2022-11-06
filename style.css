@@ -2,6 +2,15 @@
     font-size: 16px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     /* Default: Light mode */
     --static-background: #cccccc;
@@ -20,9 +29,9 @@ body {
 
     --accent-one: #ffae00;
     --accent-two: #c18606;
-
-    min-height: 100vh;
-    min-width: 100%;
+    
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -81,48 +90,42 @@ body.dark {
     }
 }
 
-* {
-    box-sizing: border-box;
-}
-
-main {
-    /* on mobile, the gutters should be minimum 16px */
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    width: calc(70vw + 80px);
-    background-color: var(--main-background);
-    min-height: 100%;
-}
-
-@media only screen and (max-width: 600px) {
-    section {
-        width: calc(100% - 3rem);
-    }
-}
-
-.header {
+header {
+    position: sticky;
     background-color: var(--header-background);
-    height: clamp(80px, 12vh, 100px);
-    /* clamp(8vh, 10vh, calc(7vh + 45px)) */
-    padding: 0 4rem;
+    padding: 0 5vw;
     margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 6vh;
 }
 
-.footer {
+main, footer {
+    width: calc(70vw + 80px);
+    background-color: var(--main-background);
+    margin: 0 auto;
+}
+
+main {
+    flex: 2;
+    /* on mobile, the gutters should be minimum 16px */
+    padding: 4rem 2rem;
+    width: calc(70vw + 80px);
+}
+
+footer {
     font-size: 0.8rem;
     display: flex;
     flex-direction: column;
 }
 
-.footer * {
-    margin: 2px auto;
+footer * {
+    margin: 2vh auto;
 }
 
-.footer a {
+footer a {
     text-decoration: underline;
 }
 
@@ -141,8 +144,8 @@ a {
 
 #toggle-theme {
     border: 2px solid var(--primary-text-color);
-    border-radius: 30px;
-    height: 50px;
+    border-radius: 3px;
+    height: 80%;
     width: 100px;
 }
 
@@ -151,21 +154,17 @@ a {
 }
 
 #light {
-    position: absolute;
     color: var(--sun-color);
     opacity: var(--sun-opacity);
     font-size: var(--sun-font-size);
     z-index: var(--sun-z-index);
-    transform: translateX(-0.6rem);
 }
 
 #dark {
-    position: absolute;
     color: var(--moon-color);
     opacity: var(--moon-opacity);
     font-size: var(--moon-font-size);
     z-index: var(--moon-z-index);
-    transform: translateX(0.6rem);
 }
 
 main .button {
@@ -209,7 +208,7 @@ main .button:hover div {
 
 .expandable {
     margin-top: 1rem;
-    padding: 6px;
+    padding: 2px 0.8rem;
     border: none;
     font-size: 1.8rem;
     color: var(--primary-text-color);
@@ -227,6 +226,7 @@ main .button:hover div {
 
 .expandable:hover, .active {
     background-color: #c18606;
+    cursor: pointer;
 }
 
 .active::after {
