@@ -213,7 +213,7 @@ main .button:hover div {
     border: none;
     font-size: 1.8rem;
     color: var(--primary-text-color);
-    width: 66%;
+    width: 100%;
     background: none;
     text-align: left;
     border-bottom: 1px solid var(--accent-two);
@@ -227,6 +227,10 @@ main .button:hover div {
 
 .expandable:hover, .active {
     background-color: #c18606;
+}
+
+.active::after {
+    content: "\2212";
 }
 
 .content {
