@@ -27,8 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Which either changes from the default or has no effect
     if (currentTheme === 'dark') {
         document.body.classList.toggle('dark');
+        toggle.checked = true;
     } else if (currentTheme === 'light') {
         document.body.classList.toggle('light');
+        toggle.checked = false;
     }
 
     // themeButton.addEventListener('click', function() {
