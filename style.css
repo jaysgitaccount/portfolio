@@ -17,8 +17,8 @@ body {
     --header-background: #f3f3f3;
     --main-background: #e7e7e7;
     --primary-text-color: #222222;
-    --opposite-text-color: #ffffff;
-    --sun-color: #ffae00;
+    --opposite-text-color: #e2e2e2;
+    --sun-color: #c18606;
     --sun-font-size: 1.8rem;
     --sun-opacity: 1.0;
     --sun-z-index: 1;
@@ -45,13 +45,13 @@ body.dark {
     --static-background: #101010;
     --header-background: #242424;
     --main-background: #1c1c1c;
-    --primary-text-color: #ffffff;
+    --primary-text-color: #e2e2e2;
     --opposite-text-color: #222222;
-    --sun-color: #ffae00;
+    --sun-color: #c18606;
     --sun-font-size: 1rem;
     --sun-opacity: 0.5;
     --sun-z-index: 0;
-    --moon-color: #ffffff;
+    --moon-color: #e2e2e2;
     --moon-font-size: 1.8rem;
     --moon-opacity: 1.0;
     --moon-z-index: 1;
@@ -62,13 +62,13 @@ body.dark {
         --static-background: #101010;
         --header-background: #242424;
         --main-background: #1c1c1c;
-        --primary-text-color: #ffffff;
+        --primary-text-color: #e2e2e2;
         --opposite-text-color: #222222;
         --sun-color: #ffae00;
         --sun-font-size: 1rem;
         --sun-opacity: 0.5;
         --sun-z-index: 0;
-        --moon-color: #ffffff;
+        --moon-color: #e2e2e2;
         --moon-font-size: 1.8rem;
         --moon-opacity: 1.0;
         --moon-z-index: 1;
@@ -78,7 +78,7 @@ body.dark {
         --header-background: #f3f3f3;
         --main-background: #e7e7e7;
         --primary-text-color: #222222;
-        --opposite-text-color: #ffffff;
+        --opposite-text-color: #e2e2e2;
         --sun-color: #ffae00;
         --sun-font-size: 1.8rem;
         --sun-opacity: 1.0;
@@ -143,17 +143,6 @@ a {
     justify-content: space-around;
     align-items: center;
     background: none;
-}
-
-#toggle-theme {
-    border: 2px solid var(--primary-text-color);
-    border-radius: 3px;
-    height: 80%;
-    width: 100px;
-}
-
-#toggle-theme:hover {
-    transform: scale(110%);
 }
 
 #light {
@@ -262,7 +251,7 @@ main i:hover,
 main i:active,
 main i:focus {
     transform: scale(110%);
-    color: var(--accent-one);
+    color: var(--accent-two);
     transition: all 0.1s ease-in;
 }
 
@@ -347,4 +336,26 @@ input:checked + .slider::before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
+}
+
+.logo {
+    outline: solid 2px var(--accent-two);
+    display: flex;
+    height: 30px;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: width 0.2s ease-in;
+    -webkit-transition: width 0.2s ease-in;
+    -ms-transition: width 0.2s ease-in;
+}
+
+.logo span {
+    margin: 0 10px;
+}
+
+.logo:active {
+    transform: scale(90%);
 }

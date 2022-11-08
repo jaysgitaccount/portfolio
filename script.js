@@ -94,4 +94,64 @@ document.addEventListener("DOMContentLoaded", function () {
         //save current scroll;;
         lastScroll = currentScroll;
     });
+
+    // LOGO ANIMATION
+    // On hover/focus, expand
+    // on active, maybe scale(90%) or lighter colour
+    // on mobile, expand when clicked. after input dtected elsewhere, collapse (or maybe after page returns to top & sections collapse)
+    // when clicked, take user back to top, collapse everything
+    // get .logo
+    // get span (.logo span)
+    // on click, .logo width
+    // and span.textContent = 'JAY'S PORTFOLIO'
+    // be able to transition back to original state (incl. textContent = 'J')
+
+    const logo = document.querySelector('.logo');
+    const logoText = document.querySelector('.logo span');
+    const logoString = "AY'S PORTFOLIO";
+
+    let expandArray = [];
+
+    logo.addEventListener('mouseenter', expand);
+    logo.addEventListener('mouseleave', shrink);
+
+    function expand() {
+        clearTimeouts();
+
+        // Get the index of the current letter
+        let currentLogoIndex = logoText.textContent.length - 1;
+
+        for (let i = currentLogoIndex; i < logoString.length; i++) {
+            trackTimeouts(() => {
+                    logoText.textContent += logoString[i];
+                },
+                i
+            );
+        }
+    }
+
+    function shrink() {
+        clearTimeouts();
+
+        for (let i = 0; i < logoText.textContent.length - 1; i++) {
+            trackTimeouts( () => {
+                    logoText.textContent = logoText.textContent.slice(0, -1);
+                },
+                i
+            );
+        };
+    }
+
+    function trackTimeouts(callback, index) {
+        // Store each TimeoutID in an array
+        expandArray.push(setTimeout(callback, Math.log(Math.pow(10, 5)) * index));
+    }
+
+    function clearTimeouts() {
+        // Avoid duplicate strings appearing in the logo by clearing current Timeouts
+        expandArray.forEach(element => {
+            clearTimeout(element);
+        });
+        expandArray = [];
+    };
 });
