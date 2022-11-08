@@ -87,6 +87,12 @@ Doing `content.style.maxHeight === 0` as a check along with `= 0` also doesn't w
 
 Default: transform: none;
 Helper class: .scrolldown { transform: translateY(-100%); }
+
+Create lastScroll = 0; for storing the previous scroll pos.
 Add event listener "scroll" to the window that, on scroll, saves the current pageYOffset of window.
 If pageYOffset is negative (scroll down), add .scrolldown to header.
 If pageYOffset is positive (scroll up), remove .scrolldown (toggle?).
+
+### The "J" Logo
+
+I learned `setTimeout()` and `clearTimeout()`
