@@ -138,14 +138,6 @@ a {
     color: inherit;
 }
 
-.button {
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: none;
-}
-
 #light {
     color: var(--sun-color);
     opacity: var(--sun-opacity);
@@ -158,45 +150,6 @@ a {
     opacity: var(--moon-opacity);
     font-size: var(--moon-font-size);
     z-index: var(--moon-z-index);
-}
-
-main .button {
-    overflow: hidden;
-    background: none;
-    width: 250px;
-    height: 50px;
-    border: 2px solid var(--accent-two);
-    transition: color 0.3s ease-out;
-    font-weight: bold;
-    color: var(--primary-text-color);
-    vertical-align: middle;
-}
-
-main .button:hover,
-main .button:active,
-main .button:focus,
-main .button:focus-within {
-    color: var(--opposite-text-color);
-    transition: color 0.2s ease-in;
-}
-
-.button a {
-    margin: 0.8rem 1rem;
-    z-index: 1;
-}
-
-main .button div {
-    position: absolute;
-    background-color: var(--accent-one);
-    width: 100%;
-    height: 100%;
-    transform: translateX(-100%);
-    transition: transform 0.3 ease-out;
-}
-
-main .button:hover div {
-    transform: translateX(0);
-    transition: transform 0.2s ease-in;
 }
 
 .expandable {
@@ -229,6 +182,7 @@ main .button:hover div {
 .active::after {
     transform: rotate(-135deg);
 }
+
 main section,
 .expandable h1,
 .expandable::after {
