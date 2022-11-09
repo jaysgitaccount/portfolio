@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             content.style.maxHeight
                 ? content.style.maxHeight = null
                 : content.style.maxHeight = content.scrollHeight + 'px';
+            drawGrid();
         })
     });
 
@@ -32,26 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.toggle('light');
         toggle.checked = false;
     }
-
-    // themeButton.addEventListener('click', function() {
-    //     let theme;
-    //     if(prefersDarkMode.matches) {
-    //         document.body.classList.toggle('light');
-
-    //         theme =
-    //         document.body.classList.contains('light')
-    //         ? 'light'
-    //         : 'dark';
-    //     } else {
-    //         document.body.classList.toggle('dark');
-
-    //         theme = 
-    //         document.body.classList.contains('dark')
-    //         ? 'dark'
-    //         : 'light';
-    //     } 
-    //     localStorage.setItem('theme', theme);
-    // });
 
     toggle.addEventListener('input', (event) => {
         let theme;
@@ -71,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
             : 'light';
         } 
         localStorage.setItem('theme', theme);
+        drawGrid();
     });
 
     // STICKY HEADER
@@ -81,8 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("scroll", () => {
         let currentScroll = window.pageYOffset;       
-
-        console.log('hello' + lastScroll);
 
         if ( currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
             // if current pos is greater than lastScroll (scrolled down)
@@ -114,6 +94,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     logo.addEventListener('mouseenter', expand);
     logo.addEventListener('mouseleave', shrink);
+
+    let hue = 0;
 
     function expand() {
         clearTimeouts();
@@ -154,4 +136,82 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         expandArray = [];
     };
+
+    // PARALLAX BACKGROUND
+
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+    const mouse = {
+        x: undefined,
+        y: undefined
+    }
+
+    resizeCanvas();
+
+    // Use device orientation for mobile, mouse for desktop
+    // not supposed to use brackets for these lol
+    window.addEventListener('scroll', animateScroll);
+    window.addEventListener('resize', drawGrid);
+
+    let totalOffset = 0;
+    let isAnimating = false;
+    
+    function animateScroll() {
+        const offsetRate = 0.05;
+        let startPos = 0;
+
+        if (!isAnimating) {
+            isAnimating = true;
+
+            animLoop();
+        }
+
+        function animLoop() {
+            const currentPos = window.pageYOffset;
+            let difference = currentPos - totalOffset;
+
+            difference *= offsetRate;
+            if (Math.abs(difference) < 0.05) {
+                // this only triggers when I'm at the top?
+                totalOffset = window.pageYOffset;
+                isAnimating = false;
+                return;
+            }
+
+            canvas.style.top = (startPos - totalOffset) + 'px';
+            totalOffset += difference;
+            drawGrid();
+            requestAnimationFrame(animLoop);
+        }
+    }
+    
+
+    function drawGrid() {
+        resizeCanvas();
+
+        const color = getComputedStyle(document.body).getPropertyValue('--opposite-text-color');
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        const interval = 28;
+
+        ctx.beginPath();
+
+        for (let x = 0; x <= canvas.width; x += interval) {
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, canvas.height);
+        }
+        for (let y = 0; y <= canvas.height; y += interval) {
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvas.width, y);
+        }
+
+        ctx.stroke();
+    }
+
+    function resizeCanvas() {
+        canvas.width = document.body.scrollWidth;
+        canvas.height = document.body.scrollHeight;
+    }
+
+    drawGrid();
 });
