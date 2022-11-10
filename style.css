@@ -15,7 +15,7 @@ body {
     /* Default: Light mode */
     --static-background: #cccccc;
     --header-background: #f3f3f3;
-    --main-background: #e7e7e7;
+    --main-background: rgba(231, 231, 231, 0.7);
     --primary-text-color: #222222;
     --opposite-text-color: #e2e2e2;
     --sun-color: #c18606;
@@ -45,7 +45,7 @@ body.dark {
     /* Dark mode */
     --static-background: #101010;
     --header-background: #242424;
-    --main-background: #1c1c1c;
+    --main-background: rgba(28, 28, 28, 0.7);
     --primary-text-color: #e2e2e2;
     --opposite-text-color: #222222;
     --sun-color: #c18606;
@@ -62,7 +62,7 @@ body.dark {
     body {
         --static-background: #101010;
         --header-background: #242424;
-        --main-background: #1c1c1c;
+        --main-background: rgba(28, 28, 28, 0.7);;
         --primary-text-color: #e2e2e2;
         --opposite-text-color: #222222;
         --sun-color: #ffae00;
@@ -77,7 +77,7 @@ body.dark {
     body.light {
         --static-background: #cccccc;
         --header-background: #f3f3f3;
-        --main-background: #e7e7e7;
+        --main-background: rgba(231, 231, 231, 0.7);
         --primary-text-color: #222222;
         --opposite-text-color: #e2e2e2;
         --sun-color: #ffae00;
@@ -114,9 +114,15 @@ main, footer {
 
 main {
     flex: 2;
-    /* on mobile, the gutters should be minimum 16px */
     padding: 4rem 2rem;
     width: calc(70vw + 80px);
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        padding: 8px;
+    }
+
 }
 
 footer {
@@ -346,7 +352,7 @@ main form input {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .featured {
         grid-auto-rows: 180px;
         grid-template-columns: 1fr;
@@ -380,6 +386,16 @@ main form input {
     padding: 0 16px;
 }
 
+@media screen and (max-width: 600px) {
+    .featured {
+        padding: 0;
+        margin: inherit 0;
+    }
+    .other ul {
+        padding: 0;
+    }
+}
+
 .subheader {
     width: 100%;
     border-bottom: 1px solid var(--accent-two);
@@ -393,4 +409,8 @@ canvas {
     background: none;
     z-index: -1;
     opacity: 0.5;
+}
+
+.welcome {
+    margin-top: 80px;
 }

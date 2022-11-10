@@ -95,4 +95,14 @@ If pageYOffset is positive (scroll up), remove .scrolldown (toggle?).
 
 ### The "J" Logo
 
-I learned `setTimeout()` and `clearTimeout()`
+This seemed like a good idea in my head, until duplicate letters started appearing when you quickly moved your mouse on and off the logo. In order to fix this, I learned `setTimeout()` and `clearTimeout()`.
+
+### Parallax background
+
+I didn't want to leave the background plain, so I learned how to draw on HTML Canvas for a subtle grid background. 
+
+I ran into trouble making the parallax effect work for multiple reasons:
+
+I was doing `addEventListener( 'scroll', animateScroll() )`, which ran the function once on execution and not any further. What I actually wanted was `addEventListener( 'scroll', animateScroll )`, which creates a reference to the function that will then run each time. 
+
+I had stored the variables for `animateScroll()` inside the function, so `totalOffset` was reset each time the function ran.
