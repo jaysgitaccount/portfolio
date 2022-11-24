@@ -150,13 +150,14 @@ document.addEventListener("DOMContentLoaded", function () {
     function drawGrid() {
         const canvas = document.querySelector('canvas');
         const ctx = canvas.getContext('2d');
-        resizeCanvas();
-
+        
         // Match colour to theme
         const color = getComputedStyle(document.body).getPropertyValue('--opposite-text-color');
         ctx.strokeStyle = color;
         ctx.lineWidth = 2;
         const interval = 28;
+
+        resizeCanvas();
 
         ctx.beginPath();
         for (let x = 0; x <= canvas.width; x += interval) {

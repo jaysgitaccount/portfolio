@@ -23,7 +23,7 @@ body {
     /* Default: Light mode */
     --static-background: #cccccc;
     --header-background: #f3f3f3;
-    --main-background: rgba(231, 231, 231, 0.7);
+    --main-background: rgba(231, 231, 231, 0.8);
     --primary-text-color: #222222;
     --opposite-text-color: #e2e2e2;
     --sun-color: #c18606;
@@ -230,7 +230,7 @@ main section>* {
     margin: 20px 0;
 }
 
-.featured-projects li>* {
+.projects li>* {
     margin: 12px 0;
 }
 
@@ -238,7 +238,7 @@ main div>a,
 section div>a {
     margin: auto 4px;
     font-size: 50px;
-    transition: all 0.3s ease-out;    
+    transition: all 0.3s ease-out;   
 }
 
 main div>a:last-child,
@@ -251,11 +251,8 @@ a>i {
 }
 /* Should apply this and transition to all a links */ 
 footer a:hover,
-footer a:active,
 main a:hover,
-main a:active,
-a>i:hover,
-a>i:active {
+a>i:hover {
     text-decoration: none;
     transform: scale(110%);
     color: var(--accent-two);
@@ -368,17 +365,17 @@ input:checked + .slider::before {
     transform: scale(90%);
 }
 
-.featured-projects ul {
+.projects ul {
     list-style: none;
     padding: 0px;
 }
 
-.featured-projects ul li {
+.projects ul li {
     margin: 16px auto;
 }
 
 @media screen and (max-width: 600px) {
-    .featured-projects ul {
+    .projects ul {
         padding: 0;
     }
 }
@@ -395,14 +392,21 @@ canvas {
     left: 0;
     background: none;
     z-index: -1;
-    opacity: 0.5;
+    -moz-opacity: 0.2;
+    -khtml-opacity:0.2;
+    -webkit-opacity: 0.2;
+    opacity: 0.2;
 }
 
 .welcome {
     margin-top: 80px;
 }
 
-.featured-projects img {
+img {
+    box-shadow: 0px 1px 2px 1px rgba(28, 28, 28, 0.3);
+}
+
+.projects img.solo {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -410,15 +414,24 @@ canvas {
 }
 
 @media screen and (max-width: 600px) {
-    .featured-projects img {
+    .projects img.solo {
         width: 100%;
     }    
 }
 
 @media screen and (max-width: 1024px) {
-    .featured-projects img {
+    .projects img.solo {
         width: 66%;
     }    
+}
+
+div.duo {
+    display: flex;
+    justify-content: space-around;
+}
+
+.duo img {
+    width: 40%;
 }
 
 .about ul {
