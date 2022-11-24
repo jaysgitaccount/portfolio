@@ -94,7 +94,6 @@ body.dark {
     }
 }
 
-
 header {    
     position: fixed;
     background-color: var(--header-background);
@@ -110,6 +109,12 @@ header {
     transition: transform 0.2s ease-in;
 }
 
+header a,
+header a:hover {
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+
 main, footer {
     width: calc(70vw + 80px);
     background-color: var(--main-background);
@@ -123,8 +128,9 @@ main {
 }
 
 @media screen and (max-width: 600px) {
-    main {
-        padding: 8px;
+    main, footer {
+        padding: 16px;
+        width: 100vw
     }
 
 }
@@ -195,7 +201,10 @@ a {
     transform: rotate(-135deg);
 }
 
-main section,
+main section {
+    padding: 4px 12px;
+}
+
 .expandable h2,
 .expandable::after {
     padding: 4px 8px;
@@ -211,29 +220,36 @@ main section>* {
     margin: 20px 0;
 }
 
-.featured-projects li,
-.about>div>* {
-    margin: 20px 0;
-}
-
-.featured-projects li * {
+.featured-projects li>* {
     margin: 12px 0;
 }
 
-main div>a {
-    margin-right: 5px;
+main div>a,
+section div>a {
+    margin: auto 4px;
     font-size: 50px;
-    transition: all 0.3s ease-out;
-    
+    transition: all 0.3s ease-out;    
 }
 
-main div>a:last-child {
+main div>a:last-child,
+section div>a:last-child {
     margin-right: 0px;
 }
 
-main i:hover,
-main i:active,
-main i:focus {
+a>i {
+    color: var(--primary-text-color);
+}
+/* Should apply this and transition to all a links */ 
+footer a:hover,
+footer a:active,
+footer a:focus,
+main a:hover,
+main a:active,
+main a:focus,
+a>i:hover,
+a>i:active,
+a>i:focus {
+    text-decoration: none;
     transform: scale(110%);
     color: var(--accent-two);
     transition: all 0.1s ease-in;
@@ -253,16 +269,23 @@ h2 {
 }
 
 h3 {
-    font-size: 1.7rem;
-}
-
-h4 {
+    text-transform: uppercase;
     font-size: 1.5rem;
 }
 
-section p {
+section p,
+.about ul li {
     font-size: 1rem;
+    line-height: 1.7rem;
 }
+
+@media screen and (max-width: 600px) {
+    section p,
+    .about ul li {
+        font-size: 1.2rem;
+    }
+}
+
 
 /* Theme Toggle */
 
@@ -347,69 +370,16 @@ input:checked + .slider::before {
     transform: scale(90%);
 }
 
-.other-projects {
-    padding: 16px;
-    display: grid;
-    grid-auto-flow: row;
-    grid-auto-rows: 200px;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-    justify-content: center;
-}
-
-@media screen and (max-width: 1000px) {
-    .other-projects {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media screen and (max-width: 700px) {
-    .other-projects {
-        grid-auto-rows: 180px;
-        grid-template-columns: 1fr;
-    }
-}
-
-.other-projects > div {
-    margin: 0;
-    color: var(--primary-text-color);
-    transition: transform 0.2s ease-in;
-}
-
-.other-projects > div:hover {
-    transition: transform 0.2s ease-out;
-    transform: scale(102%);
-}
-
-.other-projects > div:active {
-    transition: transform 0.1s;
-    transform: scale(98%);
-}
-
-.other-projects > div {
-    background-color: var(--static-background);
-    border: 1px solid var(--primary-text-color);
-    border-radius: var(--border-radius);
-    padding: 16px 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .featured-projects ul {
     list-style: none;
     padding: 0px;
 }
 
 .featured-projects ul li {
-    margin: 16px 12px;
+    margin: 16px auto;
 }
 
 @media screen and (max-width: 600px) {
-    .other-projects {
-        padding: 0;
-        margin: inherit 0;
-    }
     .featured-projects ul {
         padding: 0;
     }
@@ -437,4 +407,12 @@ canvas {
 .featured-projects img {
     height: 90px;
     width: 160px;
+}
+
+.about ul {
+    padding: 0 16px;
+}
+
+.about ul li {
+    margin: 8px 0;
 }
