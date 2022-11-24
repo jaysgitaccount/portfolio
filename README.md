@@ -119,3 +119,10 @@ A function declaration, `function executeFunction() { }` is hoisted to the top o
 A function expression, `const variableName = function () { }` (or `() => { }`) is the creation of an anonymous function and the creation of a variable, and the assignment of the anon. function to that variable. These do not hoist to the top. Declaring a function expression with `let` (or `var`) will mean that the variable itself is hoisted, but the function is not initialised, you will get `undefined`.
 
 Additionally, declaring a function expression with `const` will remove the danger of accidentally redeclaring that name.
+
+## Images
+
+Mobile images taken on Chrome (Android), desktop images taken on Firefox (Windows)
+![ScreenShot](./img/portfolio_chromemob_dark.jpg)![ScreenShot](./img/light.jpg)
+![ScreenShot](./img/portfolio_chromePC_dark.jpg)
+![ScreenShot](./img/portfolio_chromePC_light.jpg)
