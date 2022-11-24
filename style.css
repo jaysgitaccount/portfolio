@@ -405,10 +405,17 @@ canvas {
 }
 
 .featured-projects img {
-    height: 90px;
-    width: 160px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 66%;
 }
 
+@media screen and (max-width: 600px) {
+    .featured-projects img {
+        width: 100%;
+    }    
+}
 .about ul {
     padding: 0 16px;
 }
