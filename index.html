@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark light">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <title>Jay's Portfolio</title>
     <script src="./script.js"></script>
 </head>
 <body>
     <header>
-        <a href="" class="logo">
+        <a href="#" class="logo">
             <span>J</span>
         </a>
         <div class="theme-switch">
@@ -29,99 +32,85 @@
     
     <main>
         <section class="welcome">
-            <p>Welcome to my portfolio!</p>
+            <h1>Welcome to my portfolio.</h1>
+            <p>Thanks for showing interest in my work! If you'd like to talk, you can find me here:</p>
+            <div>
+                <a target="_blank" href="https://github.com/jaysgitaccount"><i class="fa-brands fa-square-github"></i></a>
+                <a target="_blank" href="https://linkedin.com/in/jtan96"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
         </section>
         
-        <button type="button" class="expandable"><h1>PROJECTS</h1></button>
+        <button type="button" class="expandable"><h2>PROJECTS</h2></button>
         <section class="projects">
-            <div class="featured">
-                <div>
-                    <h2>PROJECT NAME</h2>
-                    <p>Project description here.</p>
-                    <div>
-                        <a href=" "><i class="fa-brands fa-github"></i></a>
-                        <a href=" "><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h2>PROJECT NAME</h2>
-                    <p>Project description here.</p>
-                    <div>
-                        <a href=" "><i class="fa-brands fa-github"></i></a>
-                        <a href=" "><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h2>PROJECT NAME</h2>
-                    <p>Project description here.</p>
-                    <div>
-                        <a href=" "><i class="fa-brands fa-github"></i></a>
-                        <a href=" "><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h2>PROJECT NAME</h2>
-                    <p>Project description here.</p>
-                    <div>
-                        <a href=" "><i class="fa-brands fa-github"></i></a>
-                        <a href=" "><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h2>PROJECT NAME</h2>
-                    <p>Project description here.</p>
-                    <div>
-                        <a href=" "><i class="fa-brands fa-github"></i></a>
-                        <a href=" "><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="other">
-                <h2 class="subheader">Other Projects</h2>
+            <div class="featured-projects">
                 <ul>
                     <li>
-                        <h3>PROJECT NAME</h3>
-                        <p>Description of the project</p>
-                        <a href=" "><i class="fa-brands fa-github"></i></a>
+                        <h4 class="subheader">This Website</h4>
+                        <img src="" alt="" />
+                        <p>After looking at a lot of web portfolios, I noticed that a lot of them used full-page hero sections and my hands got tired of scrolling after a little while! So I wanted my portfolio website to be more of an "expandable business card".</p>
+                        <p>I decided not to incorporate any frameworks because I wanted to have a project that displayed my understanding of the foundations. It's tempting to rush your learning, but I think that having good foundational knowledge is important, and worth the delay in learning the trendier technologies. I also chose not to include any over-the-top visual effects, so that hopefully the user experience would be a pleasant one.</p>
+                        One of the main challenges I encountered was having to account for edge cases and not taking any feature for granted. For example, the J logo in the header worked well until I tried mousing on and off the element very quickly, where duplicate letters would start to appear in the string. Problem solving this issue was a lot of fun, and even though it was unlikely that people would actually discover the bug, I decided it was important enough to me that it was worth dealing with.
+                        <p>For a more detailed writeup of my learnings on this project, check out the <a href="https://github.com/jaysgitaccount/portfolio#readme">README</a> on Github.</p>
+                        <div>
+                            <a href="https://github.com/jaysgitaccount/portfolio"><i class="fa-brands fa-github"></i></a>
+                        </div>
                     </li>
                     <li>
-                        <h3>PROJECT NAME</h3>
-                        <p>Description of the project</p>
-                        <a href=" "><i class="fa-brands fa-github"></i></a>
-                    </li>
-                    <li>
-                        <h3>PROJECT NAME</h3>
-                        <p>Description of the project</p>
-                        <a href=" "><i class="fa-brands fa-github"></i></a>
+                        <h4 class="subheader">amberial.com</h4>
+                        <img src="" alt="" />
+                        <p>A website that I did for a client. Initially I was asked to implement an interface that displayed the game's featured levels, sourced from mod.io's REST API. However, I also offered to give the existing website an overall facelift, to bring it more in line with modern web trends.</p>
+                        <p>For a more detailed writeup of my experience on this project, check out the <a target="_blank" href="https://github.com/jaysgitaccount/amberial.com/blob/master/README.md">README</a> on Github.</p>
+                        <div>
+                            <a target="_blank" href="https://github.com/jaysgitaccount/amberial.com"><i class="fa-brands fa-github"></i></a>
+                            <a target="_blank" href="amberial.com"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
                     </li>
                 </ul>
             </div>
-        </section>
-
-        <button type="button" class="expandable"><h1>ABOUT</h1></button>
-        <section>
-            <div>
-                <h2>THE DEVELOPER</h2>
-                <p>About me here</p>
-                <p>My resume is available upon request.</p>
+            <h3 class="subheader">Other Projects</h3>
+            <div class="other-projects">
+                <div>
+                    <h4>PROJECT NAME</h4>
+                    <p>Project description here.</p>
+                    <div>
+                        <a href=" "><i class="fa-brands fa-github"></i></a>
+                        <a href=" "><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>PROJECT NAME</h4>
+                    <p>Project description here.</p>
+                    <div>
+                        <a href=" "><i class="fa-brands fa-github"></i></a>
+                        <a href=" "><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>PROJECT NAME</h4>
+                    <p>Project description here.</p>
+                    <div>
+                        <a href=" "><i class="fa-brands fa-github"></i></a>
+                        <a href=" "><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <button type="button" class="expandable"><h1>CONTACT</h1></button>
-        <section>
-            <div>
-                <h2>CONNECT WITH ME</h2>
-                <p>Thanks for showing interest in my work! If you'd like to talk, feel free to reach out to me.</p>
-                <a href="https://github.com/jaysgitaccount"><i class="fa-brands fa-square-github"></i> jaysgitaccount</a>
-                <br>
-                <a href=""><i class="fa-brands fa-linkedin"></i> linkedin</a>
-            </div>
+        <button type="button" class="expandable"><h2>ABOUT</h2></button>
+        <section class="about">
+            <h3>THE DEVELOPER</h3>
+            <p>Hello! My name is Jay and I am a front end developer living in Sydney.</p>
+            <p>I actually started my career as an artist & illustrator in the indie games industry, but at my first job (a game studio that shared an office with a web development startup), I became curious about how the Unity engine worked and I wanted to know more about the game development pipeline as a whole. As a result, I decided to learn C# for Unity and move into a more developer-artist hybrid role. In doing so, I actually fell in love with the process of development, and realised that I wanted to be able to indulge my passion for programming, because it makes me happy.</p>
+            <p>Moving forwards, I've found my time working in games extremely helpful, as the soft skills I learned from working with a wide range of development teams and clients have been easily transferrable. Things like scope management, time estimations, time management and the willingness to carry projects from start to finish; these qualities can't be learned from any online course or university degree, and I'm grateful that I was able to take these with me from my freelance career.</p>
+            <p>As a front end developer, my art career has given me a good foundational sense for design principles and an eye for detail that has helped me create and execute interesting layouts. My experiences talking to clients and teammates has helped me understand the ways that all kinds of people experience software, and what kinds of features might be worth prioritising. I'm also a fast learner, and I'm not afraid of failing in front of other people.</p>
+            <p>Outside of web development, I enjoy gardening, knitting, and spending time with my partner's dog. I also like video games.</p>
+
+            <p>I take my work very seriously, but I don't take myself seriously and am always trying to bring a positive vibe to whatever team environment I'm in.</p>
         </section>
     </main>
 
     <footer class="footer">
-        <p><a href="">DESIGN & CODE</a> BY JAY</p>
+        <p><a target="_blank" href="https://github.com/jaysgitaccount/portfolio">DESIGN & CODE</a> BY JAY</p>
     </footer>
 </body>
 </html>

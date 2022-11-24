@@ -4,6 +4,8 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
@@ -29,13 +31,14 @@ body {
 
     --accent-one: #ffae00;
     --accent-two: #c18606;
+    --border-radius: 4px;
     
     z-index: -2;
     display: flex;
     flex-direction: column;
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
     background-color: var(--static-background);
     color: var(--primary-text-color);
@@ -91,6 +94,7 @@ body.dark {
     }
 }
 
+
 header {    
     position: fixed;
     background-color: var(--header-background);
@@ -114,7 +118,7 @@ main, footer {
 
 main {
     flex: 2;
-    padding: 4rem 2rem;
+    padding: 4rem 4rem;
     width: calc(70vw + 80px);
 }
 
@@ -141,6 +145,7 @@ footer a {
 
 a {
     text-decoration: none;
+    font-weight: bold;
     color: inherit;
 }
 
@@ -159,7 +164,7 @@ a {
 }
 
 .expandable {
-    padding: 0;
+    padding: 4px 8px;
     font-size: 1.8rem;
     width: 100%;
     display: flex;    
@@ -183,6 +188,7 @@ a {
 .expandable:hover, .active {
     border: 2px solid var(--accent-two);
     cursor: pointer;
+    border-radius: var(--border-radius);
 }
 
 .active::after {
@@ -190,7 +196,7 @@ a {
 }
 
 main section,
-.expandable h1,
+.expandable h2,
 .expandable::after {
     padding: 4px 8px;
 }
@@ -201,10 +207,28 @@ main section,
     transition: max-height 0.2s ease-out;
 }
 
-main i {
-    margin: 0 3px;
-    font-size: 40px;
+main section>* {
+    margin: 20px 0;
+}
+
+.featured-projects li,
+.about>div>* {
+    margin: 20px 0;
+}
+
+.featured-projects li * {
+    margin: 12px 0;
+}
+
+main div>a {
+    margin-right: 5px;
+    font-size: 50px;
     transition: all 0.3s ease-out;
+    
+}
+
+main div>a:last-child {
+    margin-right: 0px;
 }
 
 main i:hover,
@@ -220,17 +244,20 @@ main i:focus {
 }
 
 h1 {
-    display: inline;
     font-size: 1.6rem;
-    margin: 0;
-}
-
-main section > div {
-    margin: 16px 0;
 }
 
 h2 {
-    font-size: 1.3rem;
+    font-family: Roboto;
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.7rem;
+}
+
+h4 {
+    font-size: 1.5rem;
 }
 
 section p {
@@ -320,23 +347,7 @@ input:checked + .slider::before {
     transform: scale(90%);
 }
 
-main form,
-main input,
-main textarea {
-    display: block;
-    padding: 0;
-    margin: 0;
-}
-
-main form {
-    padding: 16px 16px;
-}
-
-main form input {
-    color: red;
-}
-
-.featured {
+.other-projects {
     padding: 16px;
     display: grid;
     grid-auto-flow: row;
@@ -347,51 +358,59 @@ main form input {
 }
 
 @media screen and (max-width: 1000px) {
-    .featured {
+    .other-projects {
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media screen and (max-width: 700px) {
-    .featured {
+    .other-projects {
         grid-auto-rows: 180px;
         grid-template-columns: 1fr;
     }
 }
 
-.featured h2,
-.featured p,
-.featured div {
+.other-projects > div {
     margin: 0;
-    color: #e2e2e2;
+    color: var(--primary-text-color);
+    transition: transform 0.2s ease-in;
 }
 
-.featured > div {
-    background:
-    linear-gradient(
-        rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.5)
-    ),
-    url('./img/placeholder.png');
+.other-projects > div:hover {
+    transition: transform 0.2s ease-out;
+    transform: scale(102%);
+}
+
+.other-projects > div:active {
+    transition: transform 0.1s;
+    transform: scale(98%);
+}
+
+.other-projects > div {
+    background-color: var(--static-background);
     border: 1px solid var(--primary-text-color);
-    border-radius: 0px;
+    border-radius: var(--border-radius);
     padding: 16px 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.other ul {
+.featured-projects ul {
     list-style: none;
-    padding: 0 16px;
+    padding: 0px;
+}
+
+.featured-projects ul li {
+    margin: 16px 12px;
 }
 
 @media screen and (max-width: 600px) {
-    .featured {
+    .other-projects {
         padding: 0;
         margin: inherit 0;
     }
-    .other ul {
+    .featured-projects ul {
         padding: 0;
     }
 }
@@ -399,7 +418,7 @@ main form input {
 .subheader {
     width: 100%;
     border-bottom: 1px solid var(--accent-two);
-    padding: 4px 0;
+    padding: 4px 4px;
 }
 
 canvas {
@@ -413,4 +432,9 @@ canvas {
 
 .welcome {
     margin-top: 80px;
+}
+
+.featured-projects img {
+    height: 90px;
+    width: 160px;
 }

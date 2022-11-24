@@ -17,6 +17,11 @@ What I want from my portfolio website:
     - It should have a spin that is "uniquely me"
     - It should still be a pleasant viewing experience
 
+## Notes (post-project)
+
+I'm really happy with this website! And, as intended, I learned MANY things while building it. My main takeaway from this project is the reassurance that I do actually really enjoy doing web development work. I ran into all kinds of obstacles, and even though they were a little frustrating, I had a great time solving them.
+
+Revisiting this website after finishing up on [amberial.com](https://github.com/jaysgitaccount/amberial.com), it's really clear how much of the work frameworks do for you.
 
 ## Learnings
 
@@ -106,3 +111,11 @@ I ran into trouble making the parallax effect work for multiple reasons:
 I was doing `addEventListener( 'scroll', animateScroll() )`, which ran the function once on execution and not any further. What I actually wanted was `addEventListener( 'scroll', animateScroll )`, which creates a reference to the function that will then run each time. 
 
 I had stored the variables for `animateScroll()` inside the function, so `totalOffset` was reset each time the function ran.
+
+### Function declarations vs expressions
+
+A function declaration, `function executeFunction() { }` is hoisted to the top of the scope.
+
+A function expression, `const variableName = function () { }` (or `() => { }`) is the creation of an anonymous function and the creation of a variable, and the assignment of the anon. function to that variable. These do not hoist to the top. Declaring a function expression with `let` (or `var`) will mean that the variable itself is hoisted, but the function is not initialised, you will get `undefined`.
+
+Additionally, declaring a function expression with `const` will remove the danger of accidentally redeclaring that name.
