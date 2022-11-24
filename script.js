@@ -17,9 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 // The next sibling is always a <section>
                 const content = element.nextElementSibling;
                 setExpandableHeight(content, content.style.maxHeight);
-                window.addEventListener('resize', () => {
-                    setExpandableHeight(content, content.style.maxHeight)
-                })
             })
 
             // Expand/collapse the selected <section>
@@ -30,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     ? element.style.maxHeight = null
                     : element.style.maxHeight = element.scrollHeight + 'px';
             }
-
         });
     }
 
