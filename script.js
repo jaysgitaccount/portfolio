@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+    drawGrid();
+    window.addEventListener('resize', drawGrid);
     setTheme();
     setExpandableSections();
     setStickyHeader();
     setLogoAnim();
-    drawGrid();
-    window.addEventListener('resize', drawGrid);
     setParallaxBackground();
 
     // Manages expandable buttons and adjacent sections

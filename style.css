@@ -252,13 +252,10 @@ a>i {
 /* Should apply this and transition to all a links */ 
 footer a:hover,
 footer a:active,
-footer a:focus,
 main a:hover,
 main a:active,
-main a:focus,
 a>i:hover,
-a>i:active,
-a>i:focus {
+a>i:active {
     text-decoration: none;
     transform: scale(110%);
     color: var(--accent-two);
