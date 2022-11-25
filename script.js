@@ -225,7 +225,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const imageDisplay = document.querySelector('#full-page');
         const fullSizeImage = document.querySelector('#full-page img');
         const imageDisplayBG = document.querySelector('#full-page div');
-        const closeDisplay = document.querySelector('#full-page button');
         const images = document.querySelectorAll('.projects img');
 
         // Allow user to click to exit display
@@ -235,14 +234,19 @@ document.addEventListener("DOMContentLoaded", function () {
             imageDisplay.style.display = 'none';
         })
 
-        closeDisplay.addEventListener('click', (e) => {
-            imageDisplay.style.display = 'none';
-        })
+        document.querySelector('#full-page button').addEventListener(
+            'click', 
+            (e) => {
+                imageDisplay.style.display = 'none';
+            }
+        )
 
         // Enable every image to activate the display
         images.forEach(element => {
             element.addEventListener('click', () => {
-                fullSizeImage.setAttribute('src', element.getAttribute('src'));
+                let fullPath = element.getAttribute('src');
+                let fileName = fullPath.split(/[\\\/]/).pop();
+                fullSizeImage.setAttribute('src', './img/full/' + fileName);
                 imageDisplay.style.display = 'flex';
             })
         })

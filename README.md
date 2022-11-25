@@ -123,6 +123,6 @@ Additionally, declaring a function expression with `const` will remove the dange
 ## Images
 
 Mobile images taken on Chrome (Android), desktop images taken on Firefox (Windows)
-![ScreenShot](./img/portfolio_chromemob_dark.jpg)![ScreenShot](./img/portfolio_chromemob_light.jpg)
-![ScreenShot](./img/portfolio_chromePC_dark.jpg)
-![ScreenShot](./img/portfolio_chromePC_light.jpg)
+![ScreenShot](./img/full/portfolio_chromemob_dark.jpg)![ScreenShot](./img/full/portfolio_chromemob_light.jpg)
+![ScreenShot](./img/full/portfolio_chromePC_dark.jpg)
+![ScreenShot](./img/full/portfolio_chromePC_light.jpg)
