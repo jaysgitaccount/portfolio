@@ -35,8 +35,7 @@ body {
     --moon-opacity: 0.5;
     --moon-z-index: 0;
 
-    --accent-one: #ffae00;
-    --accent-two: #c18606;
+    --accent-color: #c18606;
     --border-radius: 4px;
     
     z-index: -2;
@@ -55,7 +54,7 @@ body.dark {
     /* Dark mode */
     --static-background: #101010;
     --header-background: #242424;
-    --main-background: rgba(28, 28, 28, 0.7);
+    --main-background: rgba(28, 28, 28, 0.8);
     --primary-text-color: #e2e2e2;
     --opposite-text-color: #222222;
     --sun-color: #c18606;
@@ -72,7 +71,7 @@ body.dark {
     body {
         --static-background: #101010;
         --header-background: #242424;
-        --main-background: rgba(28, 28, 28, 0.7);;
+        --main-background: rgba(28, 28, 28, 0.8);
         --primary-text-color: #e2e2e2;
         --opposite-text-color: #222222;
         --sun-color: #ffae00;
@@ -87,7 +86,7 @@ body.dark {
     body.light {
         --static-background: #cccccc;
         --header-background: #f3f3f3;
-        --main-background: rgba(231, 231, 231, 0.7);
+        --main-background: rgba(231, 231, 231, 0.8);
         --primary-text-color: #222222;
         --opposite-text-color: #e2e2e2;
         --sun-color: #ffae00;
@@ -190,7 +189,7 @@ a {
     color: var(--primary-text-color);
     text-align: left;
     border: 1px solid rgba(1,1,1,0);
-    border-bottom: 1px solid var(--accent-two);
+    border-bottom: 1px solid var(--accent-color);
     transition: border 0.1s ease-in;
 }
 
@@ -202,7 +201,7 @@ a {
 }
 
 .expandable:hover, .active {
-    border: 2px solid var(--accent-two);
+    border: 2px solid var(--accent-color);
     cursor: pointer;
     border-radius: var(--border-radius);
 }
@@ -255,7 +254,7 @@ main a:hover,
 a>i:hover {
     text-decoration: none;
     transform: scale(110%);
-    color: var(--accent-two);
+    color: var(--accent-color);
     transition: all 0.1s ease-in;
 }
 
@@ -334,7 +333,7 @@ section p,
 }
 
 input:focus + .slider {
-    outline: 1px solid var(--accent-two);
+    outline: 1px solid var(--accent-color);
 }
 
 input:checked + .slider::before {
@@ -344,7 +343,7 @@ input:checked + .slider::before {
 }
 
 .logo {
-    outline: solid 2px var(--accent-two);
+    outline: solid 2px var(--accent-color);
     display: flex;
     height: 2rem;
     width: auto;
@@ -382,7 +381,7 @@ input:checked + .slider::before {
 
 .subheader {
     width: 100%;
-    border-bottom: 1px solid var(--accent-two);
+    border-bottom: 1px solid var(--accent-color);
     padding: 4px 4px;
 }
 
@@ -395,7 +394,7 @@ canvas {
     -moz-opacity: 0.2;
     -khtml-opacity:0.2;
     -webkit-opacity: 0.2;
-    opacity: 0.2;
+    opacity: 0.5;
 }
 
 .welcome {
