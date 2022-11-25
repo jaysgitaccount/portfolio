@@ -13,22 +13,52 @@ document.addEventListener("DOMContentLoaded", function () {
         const expandables = document.querySelectorAll('.expandable');
 
         expandables.forEach(element => {
+            // The next sibling is always a <section>
+            const content = element.nextElementSibling;
+            const isActive = () => {
+                return element.classList.contains('active');
+            }
+            // At first, disable inactive anchor elements
+            toggleFocusableChildren(
+                getKeyboardFocusableElements(content),
+                isActive()
+            );
+
             element.addEventListener("click", () => {
                 element.classList.toggle('active');
-                // The next sibling is always a <section>
-                const content = element.nextElementSibling;
                 setExpandableHeight(content, content.style.maxHeight);
+                toggleFocusableChildren(
+                    getKeyboardFocusableElements(content),
+                    isActive()
+                );
             })
-
-            // Expand/collapse the selected <section>
-            function setExpandableHeight(element, isNotNull) {
-                // Only set height if it's needed
-                // maxHeight is used for animation purposes
-                isNotNull
-                    ? element.style.maxHeight = null
-                    : element.style.maxHeight = element.scrollHeight + 'px';
-            }
         });
+
+        // Expand/collapse the selected section
+        function setExpandableHeight(element, isNotNull) {
+            // Only set height if it's needed
+            // maxHeight is used for animation purposes
+            isNotNull
+                ? element.style.maxHeight = null
+                : element.style.maxHeight = element.scrollHeight + 'px';
+        }
+
+        function toggleFocusableChildren(nodeList, isActive) {
+            if (nodeList.length > 0) {
+                let focusValue = isActive
+                                ? 0
+                                : -1
+                nodeList.forEach (element => {
+                    element.tabIndex = focusValue;
+                })
+            }
+        }
+
+        function getKeyboardFocusableElements (parentElement) {
+            return parentElement.querySelectorAll(
+                'a[href], button, input, [tabindex]:not([tabindex="-1"])'
+            )
+        }
     }
 
     // Manages light/dark modes
