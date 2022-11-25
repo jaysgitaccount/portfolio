@@ -24,7 +24,7 @@ body {
     /* Default: Light mode */
     --static-background: #cccccc;
     --header-background: #f3f3f3;
-    --main-background: rgba(231, 231, 231, 0.8);
+    --main-background: rgba(231, 231, 231, 0.7);
     --primary-text-color: #222222;
     --opposite-text-color: #e2e2e2;
     --sun-color: #c18606;
@@ -55,7 +55,7 @@ body.dark {
     /* Dark mode */
     --static-background: #101010;
     --header-background: #242424;
-    --main-background: rgba(28, 28, 28, 0.8);
+    --main-background: rgba(28, 28, 28, 0.7);
     --primary-text-color: #e2e2e2;
     --opposite-text-color: #222222;
     --sun-color: #c18606;
@@ -72,7 +72,7 @@ body.dark {
     body {
         --static-background: #101010;
         --header-background: #242424;
-        --main-background: rgba(28, 28, 28, 0.8);
+        --main-background: rgba(28, 28, 28, 0.7);
         --primary-text-color: #e2e2e2;
         --opposite-text-color: #222222;
         --sun-color: #ffae00;
@@ -87,7 +87,7 @@ body.dark {
     body.light {
         --static-background: #cccccc;
         --header-background: #f3f3f3;
-        --main-background: rgba(231, 231, 231, 0.8);
+        --main-background: rgba(231, 231, 231, 0.7);
         --primary-text-color: #222222;
         --opposite-text-color: #e2e2e2;
         --sun-color: #ffae00;
@@ -399,9 +399,9 @@ canvas {
     left: 0;
     background: none;
     z-index: -1;
-    -moz-opacity: 0.2;
-    -khtml-opacity:0.2;
-    -webkit-opacity: 0.2;
+    -moz-opacity: 0.5;
+    -khtml-opacity:0.5;
+    -webkit-opacity: 0.5;
     opacity: 0.5;
 }
 
@@ -469,28 +469,33 @@ div.thumbnails {
 }
 
 #full-page button {
+    background-color: var(--main-background);
+    z-index: 5;
     position: absolute;
     top: 0;
     right: 0;
-    margin: 5px 12px 0 0;
-    font-size: 40px;
-    color: white;
+    margin: 1rem 1rem;
+    font-size: 1.5rem;
 }
 
 button.close-section {
-    background-color: var(--main-background);
-    color: var(--primary-text-color);
+    font-weight: 300;
     margin: auto;
     margin-bottom: 20px;
-    padding: 0.2rem 0.4rem;
     font-size: 1rem;
-    font-weight: 300;
+}
+
+button.close-section,
+#full-page button {
+    color: var(--primary-text-color);
+    padding: 0.2rem 0.4rem;
     border: 1px solid rgba(1,1,1,0);
     border-bottom: 1px solid var(--accent-color);
     transition: all 0.1s ease-in;
 }
 
-button.close-section:hover {
+button.close-section:hover,
+#full-page button:hover {
     transition: all 0.1s ease-out;
     border: 1px solid var(--accent-color);
     outline: 1px solid var(--accent-color);
