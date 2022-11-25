@@ -1,5 +1,6 @@
 :root {
     font-size: 16px;
+    line-height: 1.5rem;
 }
 
 @media screen and (max-width: 600px) {
@@ -102,7 +103,14 @@ body.dark {
 
 button {
     font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 header {    
     position: fixed;
     background-color: var(--header-background);
@@ -146,22 +154,13 @@ main {
 
 footer {
     font-size: 0.8rem;
+    font-weight: 300;
     display: flex;
     flex-direction: column;
 }
 
 footer * {
     margin: 2vh auto;
-}
-
-footer a {
-    text-decoration: underline;
-}
-
-a {
-    text-decoration: none;
-    font-weight: bold;
-    color: inherit;
 }
 
 #light {
@@ -182,10 +181,7 @@ a {
     padding: 4px 8px;
     font-size: 1.8rem;
     width: 100%;
-    display: flex;    
     justify-content: space-between;
-    align-items: center;
-    background: none;
     color: var(--primary-text-color);
     text-align: left;
     border: 1px solid rgba(1,1,1,0);
@@ -201,9 +197,10 @@ a {
 }
 
 .expandable:hover, .active {
-    border: 2px solid var(--accent-color);
+    border: 1px solid var(--accent-color);
     cursor: pointer;
     border-radius: var(--border-radius);
+    outline: 1px solid var(--accent-color);
 }
 
 .active::after {
@@ -233,6 +230,7 @@ main section>* {
     margin: 12px 0;
 }
 
+/* Selecting icon link divs */
 main div>a,
 section div>a {
     margin: auto 4px;
@@ -245,25 +243,36 @@ section div>a:last-child {
     margin-right: 0px;
 }
 
-a>i {
+a {
+    text-decoration: none;
+    font-weight: bold;
     color: var(--primary-text-color);
+    transition: all 0.2s ease-out;
 }
-/* Should apply this and transition to all a links */ 
-footer a:hover,
-main a:hover,
+
+footer a {
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+a:hover,
 a>i:hover {
     text-decoration: none;
-    transform: scale(110%);
+    transform: scale(105%);
     color: var(--accent-color);
-    transition: all 0.1s ease-in;
+    transition: all 0.2s ease-in;
 }
 
 .scroll-down {
     transform: translateY(-100%);
 }
 
+h2, h3 {
+    font-weight: 300;
+}
 h1 {
     font-size: 1.6rem;
+    font-weight: 400;
 }
 
 h2 {
@@ -273,12 +282,6 @@ h2 {
 h3 {
     text-transform: uppercase;
     font-size: 1.5rem;
-}
-
-section p,
-.about ul li {
-    font-size: 1rem;
-    line-height: 1.5rem;
 }
 
 /* Theme Toggle */
@@ -343,25 +346,30 @@ input:checked + .slider::before {
 }
 
 .logo {
+    font-weight: 300;
     outline: solid 2px var(--accent-color);
     display: flex;
     height: 2rem;
     width: auto;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
     font-size: 1.2rem;
-    transition: width 0.2s ease-in;
-    -webkit-transition: width 0.2s ease-in;
-    -ms-transition: width 0.2s ease-in;
+    transition: width 0.1s ease-in;
+    -webkit-transition: width 0.1s ease-in;
+    -ms-transition: width 0.1s ease-in;
 }
 
 .logo span {
     margin: 0 0.75rem;
 }
 
+.logo:hover {
+    transform: scale(100%);
+}
+
 .logo:active {
-    transform: scale(90%);
+    transform: scale(98%);
+    transition: width 0.1s ease-out;
 }
 
 .projects ul {
@@ -398,7 +406,7 @@ canvas {
 }
 
 .welcome {
-    margin-top: 80px;
+    margin-top: 10vh;
 }
 
 .about ul {
@@ -462,13 +470,28 @@ div.thumbnails {
 
 #full-page button {
     position: absolute;
-    border: none;
-    background: none;
     top: 0;
     right: 0;
     margin: 5px 12px 0 0;
     font-size: 40px;
-    text-align: center;
     color: white;
-    cursor: pointer;
+}
+
+button.close-section {
+    background-color: var(--main-background);
+    color: var(--primary-text-color);
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 0.2rem 0.4rem;
+    font-size: 1rem;
+    font-weight: 300;
+    border: 1px solid rgba(1,1,1,0);
+    border-bottom: 1px solid var(--accent-color);
+    transition: all 0.1s ease-in;
+}
+
+button.close-section:hover {
+    transition: all 0.1s ease-out;
+    border: 1px solid var(--accent-color);
+    outline: 1px solid var(--accent-color);
 }

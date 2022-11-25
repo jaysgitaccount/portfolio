@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+    setTheme();
     drawGrid();
     window.addEventListener('resize', drawGrid);
-    setTheme();
     setExpandableSections();
     setStickyHeader();
     setLogoAnim();
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 getKeyboardFocusableElements(content),
                 isActive()
             );
-
             element.addEventListener("click", () => {
                 element.classList.toggle('active');
                 setExpandableHeight(content, content.style.maxHeight);
@@ -32,6 +31,18 @@ document.addEventListener("DOMContentLoaded", function () {
                     isActive()
                 );
             })
+            // Also set up corresponding close button
+            content.querySelector('.close-section').addEventListener(
+                'click',
+                () => {
+                    element.classList.toggle('active');
+                    setExpandableHeight(content, content.style.maxHeight);
+                    toggleFocusableChildren(
+                        getKeyboardFocusableElements(content),
+                        isActive()
+                    );
+                }
+            )
         });
 
         // Expand/collapse the selected section
@@ -42,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ? element.style.maxHeight = null
                 : element.style.maxHeight = element.scrollHeight + 'px';
         }
-
+        
         function toggleFocusableChildren(nodeList, isActive) {
             if (nodeList.length > 0) {
                 let focusValue = isActive
@@ -83,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
             toggle.checked = false;
         }
 
-        toggle.addEventListener('input', (event) => {
+        toggle.addEventListener('input', () => {
             let theme;
             if(prefersDarkMode.matches) {
                 // If browser prefers dark, only .light exists
@@ -200,8 +211,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function resizeCanvas() {
             canvas.width = document.body.scrollWidth;
-            // Double canvas height to avoid gap when resizing
-            canvas.height = document.body.scrollHeight * 2;
+            // Increase canvas height to avoid gap when resizing
+            canvas.height = document.body.scrollHeight * 2.5;
         }
     }
 
