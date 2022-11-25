@@ -402,8 +402,19 @@ canvas {
     margin-top: 80px;
 }
 
-img {
+.about ul {
+    padding: 0 16px;
+}
+
+.about ul li {
+    margin: 8px 0;
+}
+
+.projects img {
     box-shadow: 0px 1px 2px 1px rgba(28, 28, 28, 0.3);
+    cursor: zoom-in, pointer;
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
 }
 
 .projects img.solo {
@@ -434,10 +445,43 @@ div.duo {
     width: 40%;
 }
 
-.about ul {
-    padding: 0 16px;
+/* Fullscreen image display */
+#full-page {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.about ul li {
-    margin: 8px 0;
+#full-page div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+#full-page img {
+    z-index: 4;
+    max-width: 95%;
+    max-height: 95%;
+    margin: auto;
+    box-shadow: 0px 2px 3px 1px rgba(14, 14, 14, 0.5);
+}
+
+#full-page button {
+    position: absolute;
+    border: none;
+    background: none;
+    top: 0;
+    right: 0;
+    margin: 5px 12px 0 0;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
 }

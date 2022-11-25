@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setStickyHeader();
     setLogoAnim();
     setParallaxBackground();
+    enableImageDisplay();
 
     // Manages expandable buttons and adjacent sections
     function setExpandableSections() {
@@ -218,5 +219,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 requestAnimationFrame(animLoop);
             }
         }
+    }
+
+    function enableImageDisplay() {
+        const imageDisplay = document.querySelector('#full-page');
+        const fullSizeImage = document.querySelector('#full-page img');
+        const imageDisplayBG = document.querySelector('#full-page div');
+        const closeDisplay = document.querySelector('#full-page button');
+        const images = document.querySelectorAll('.projects img');
+
+        // Allow user to click to exit display
+        imageDisplayBG.addEventListener('click', (e) => {
+            // Clicking on the image itself does not exit
+            e.stopPropagation;
+            imageDisplay.style.display = 'none';
+        })
+
+        closeDisplay.addEventListener('click', (e) => {
+            imageDisplay.style.display = 'none';
+        })
+
+        // Enable every image to activate the display
+        images.forEach(element => {
+            element.addEventListener('click', () => {
+                fullSizeImage.setAttribute('src', element.getAttribute('src'));
+                imageDisplay.style.display = 'flex';
+            })
+        })
     }
 });
