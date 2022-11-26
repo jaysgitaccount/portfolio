@@ -269,15 +269,12 @@ document.addEventListener("DOMContentLoaded", function () {
         imageDisplayBG.addEventListener('click', (e) => {
             // Clicking on the image itself does not exit
             e.stopPropagation;
-            imageDisplay.style.display = 'none';
+            closeDisplay();
         })
 
-        document.querySelector('#full-page button').addEventListener(
-            'click', 
-            (e) => {
-                imageDisplay.style.display = 'none';
-            }
-        )
+        document.querySelector('#full-page button').addEventListener('click', (e) => {
+            closeDisplay();   
+        })
 
         // Enable every image to activate the display
         images.forEach(element => {
@@ -288,5 +285,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 imageDisplay.style.display = 'flex';
             })
         })
+
+        function closeDisplay() {
+            fullSizeImage.setAttribute('src', '');
+            imageDisplay.style.display = 'none';
+        }
     }
 });
