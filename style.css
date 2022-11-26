@@ -5,7 +5,7 @@
 
 @media screen and (max-width: 600px) {
     :root {
-        font-size: 20px;
+        font-size: 16px;
     }
 }
 
@@ -42,8 +42,6 @@ body {
     z-index: -2;
     display: flex;
     flex-direction: column;
-    margin: 0;
-    padding: 0;
     font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
 
@@ -114,7 +112,7 @@ button {
 header {    
     position: fixed;
     background-color: var(--header-background);
-    padding: 0 5vw;
+    padding: 0 48px;
     margin: 0;
     display: flex;    
     justify-content: space-between;
@@ -123,7 +121,7 @@ header {
     height: 3.5rem;
     z-index: 2;
     transform: none;
-    transition: transform 0.2s ease-in;
+    transition: transform 0.1s ease-in;
 }
 
 header a,
@@ -140,16 +138,19 @@ main, footer {
 
 main {
     flex: 2;
-    padding: 4rem 4rem;
-    width: calc(70vw + 80px);
+    padding: 4rem;
 }
 
 @media screen and (max-width: 600px) {
-    main, footer {
+    header {
         padding: 16px;
-        width: 100vw
     }
 
+    main, footer {
+        padding: 8px;
+        width: calc(100vw - 24px);
+        max-width: 100vw;
+    }
 }
 
 footer {
@@ -157,10 +158,7 @@ footer {
     font-weight: 300;
     display: flex;
     flex-direction: column;
-}
-
-footer * {
-    margin: 2vh auto;
+    padding: 2rem;
 }
 
 #light {
@@ -178,7 +176,6 @@ footer * {
 }
 
 .expandable {
-    padding: 4px 8px;
     font-size: 1.8rem;
     width: 100%;
     justify-content: space-between;
@@ -186,14 +183,16 @@ footer * {
     text-align: left;
     border: 1px solid rgba(1,1,1,0);
     border-bottom: 1px solid var(--accent-color);
+    border-radius: var(--border-radius) var(--border-radius) 0px 0px;
     transition: border 0.1s ease-in;
+    padding: 8px;
 }
 
 .expandable::after {
     content: "\002B";
     font-weight: bold;
     float: right;
-    transition: transform 0.2s ease-in;
+    transition: transform 0.1s ease-in;
 }
 
 .expandable:hover, .active {
@@ -207,39 +206,48 @@ footer * {
     transform: rotate(-135deg);
 }
 
+main > * {
+    margin: 8px auto;
+}
+
+footer * {
+    margin: 0px auto;
+}
+
 main section {
-    padding: 4px 12px;
+    padding: 0px 12px;
 }
 
 .expandable h2,
 .expandable::after {
-    padding: 4px 8px;
+    padding: 4px 4px;
 }
 
 .expandable + section {
+    margin: 0;
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.2s ease-out;
+    transition: max-height 0.1s ease-out;
 }
 
-main section>* {
+main section > * {
     margin: 20px 0;
 }
 
-.projects li>* {
+.projects li > * {
     margin: 12px 0;
 }
 
 /* Selecting icon link divs */
-main div>a,
-section div>a {
-    margin: auto 4px;
+main div > a,
+section div > a {
+    margin-right: 4px;
     font-size: 50px;
-    transition: all 0.3s ease-out;   
+    transition: all 0.1s ease-out;   
 }
 
-main div>a:last-child,
-section div>a:last-child {
+main div > a:last-child,
+section div > a:last-child {
     margin-right: 0px;
 }
 
@@ -247,20 +255,19 @@ a {
     text-decoration: none;
     font-weight: bold;
     color: var(--primary-text-color);
-    transition: all 0.2s ease-out;
+    transition: all 0.1s ease-out;
 }
 
 footer a {
-    text-decoration: underline;
     font-weight: 400;
 }
 
 a:hover,
-a>i:hover {
+a > i:hover {
     text-decoration: none;
     transform: scale(105%);
     color: var(--accent-color);
-    transition: all 0.2s ease-in;
+    transition: all 0.1s ease-in;
 }
 
 .scroll-down {
@@ -270,6 +277,7 @@ a>i:hover {
 h2, h3 {
     font-weight: 300;
 }
+
 h1 {
     font-size: 1.6rem;
     font-weight: 400;
@@ -282,6 +290,9 @@ h2 {
 h3 {
     text-transform: uppercase;
     font-size: 1.5rem;
+    width: 100%;
+    border-bottom: 1px solid var(--accent-color);
+    padding: 8px 4px;
 }
 
 /* Theme Toggle */
@@ -372,25 +383,29 @@ input:checked + .slider::before {
     transition: width 0.1s ease-out;
 }
 
-.projects ul {
-    list-style: none;
-    padding: 0px;
-}
-
-.projects ul li {
-    margin: 16px auto;
-}
-
 @media screen and (max-width: 600px) {
-    .projects ul {
-        padding: 0;
+    .logo {
+        font-size: 1rem;
+        line-height: 0.8rem;
+        max-width: 50%;
     }
 }
 
-.subheader {
-    width: 100%;
-    border-bottom: 1px solid var(--accent-color);
-    padding: 4px 4px;
+.projects ul {
+    list-style: none;
+    padding: 0;
+}
+
+.welcome {
+    margin-top: 10vh;
+}
+
+ul {
+    padding: 0 16px;
+}
+
+ul li {
+    margin: 8px 4px;
 }
 
 canvas {
@@ -405,18 +420,6 @@ canvas {
     opacity: 0.5;
 }
 
-.welcome {
-    margin-top: 10vh;
-}
-
-.about ul {
-    padding: 0 16px;
-}
-
-.about ul li {
-    margin: 8px 0;
-}
-
 div.thumbnails {
     display: flex;
     justify-content: center;
@@ -425,7 +428,7 @@ div.thumbnails {
 }
 
 .thumbnails img {
-    margin: 8px;
+    margin: 12px;
     box-shadow: 0px 1px 2px 1px rgba(28, 28, 28, 0.3);
     cursor: zoom-in, pointer;
     cursor: -webkit-zoom-in;
@@ -475,7 +478,8 @@ div.thumbnails {
     top: 0;
     right: 0;
     margin: 1rem 1rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    border-radius: 0px;
 }
 
 button.close-section {
@@ -483,6 +487,7 @@ button.close-section {
     margin: auto;
     margin-bottom: 20px;
     font-size: 1rem;
+    border-radius: 2px 2px 0px 0px;
 }
 
 button.close-section,
@@ -491,12 +496,13 @@ button.close-section,
     padding: 0.2rem 0.4rem;
     border: 1px solid rgba(1,1,1,0);
     border-bottom: 1px solid var(--accent-color);
-    transition: all 0.1s ease-in;
+    transition: border 0.1s ease-in;
 }
 
 button.close-section:hover,
 #full-page button:hover {
     transition: all 0.1s ease-out;
     border: 1px solid var(--accent-color);
+    border-radius: 2px;
     outline: 1px solid var(--accent-color);
 }
